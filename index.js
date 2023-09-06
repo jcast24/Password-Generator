@@ -1,10 +1,16 @@
+const result = document.getElementById("result")
+const generateButton = document.getElementById("generate-btn");
+
+
 function getRandomLetterNum() {
-    let hands = 'abcefghijklmnopqrstuvwxyz0123456789'
+    let characters = 'abcefghijklmnopqrstuvwxyz0123456789'
     let result = '';
-    for (let i=0; i<hands.length; i++){
-        result += hands.charAt(Math.floor(Math.random() * hands.length))
+    for (let i=0; i<characters.length; i++){
+        result += characters[Math.floor(Math.random() * characters.length)]
     }
     return result; 
 }
 
-console.log( getRandomLetterNum() )
+generateButton.addEventListener("click", function(){
+    result.innerHTML = `${getRandomLetterNum()}`;
+})
