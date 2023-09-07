@@ -1,16 +1,46 @@
-const result = document.getElementById("result")
+const result_one = document.getElementById("result1");
+const result_two = document.getElementById("result2");
+const result_three = document.getElementById("result3");
+const result_four = document.getElementById("result4");
+
 const generateButton = document.getElementById("generate-btn");
 
+const input_value = document.getElementById("input-length");
 
-function getRandomLetterNum() {
-    let characters = 'abcefghijklmnopqrstuvwxyz0123456789'
-    let result = '';
-    for (let i=0; i<characters.length; i++){
-        result += characters[Math.floor(Math.random() * characters.length)]
-    }
-    return result; 
+const uppercaseCheckbox = document.getElementById("uppercaseCheck");
+
+const characters = 'abcefghijklmnopqrstuvwxyz0123456789';
+
+function generateRandomCharacters() {
+    let randomCharacters = characters[Math.floor(Math.random() * characters.length)];
+    return randomCharacters;
 }
 
-generateButton.addEventListener("click", function(){
-    result.innerHTML = `${getRandomLetterNum()}`;
-})
+function setInputLength() { 
+    let value = input_value.value;
+
+    if (value === ' ') {
+        value = 12;
+    }
+
+    return value;
+}
+
+function generatePassword(length) {
+    let password = '';
+    for (let i=0; i<length; i++) {
+        password += generateRandomCharacters();
+    }
+    return password;
+}
+
+function renderPass() {
+    let length = setInputLength();
+    result_one.innerHTML = generatePassword(length);
+    result_two.innerHTML = generatePassword(length);
+    result_three.innerHTML = generatePassword(length);
+    result_four.innerHTML = generatePassword(length);
+
+}
+
+generateButton.addEventListener("click", renderPass);
