@@ -9,7 +9,7 @@ const input_value = document.getElementById("input-length");
 
 const uppercaseCheckbox = document.getElementById("uppercaseCheck");
 
-const characters = 'abcefghijklmnopqrstuvwxyz0123456789';
+const characters = 'abcefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+';
 
 function generateRandomCharacters() {
     let randomCharacters = characters[Math.floor(Math.random() * characters.length)];
